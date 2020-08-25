@@ -1,6 +1,6 @@
 {
   "name": "gatsby-source-youtube",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Gatsby plugin to use Youtube as a data source",
   "repository": "https://github.com/cedricdelpoux/gatsby-source-youtube",
   "author": {
