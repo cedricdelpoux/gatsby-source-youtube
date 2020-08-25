@@ -1,0 +1,61 @@
+{
+  "name": "gatsby-source-youtube",
+  "version": "2.0.0",
+  "description": "Gatsby plugin to use Youtube as a data source",
+  "repository": "https://github.com/cedricdelpoux/gatsby-source-youtube",
+  "author": {
+    "name": "Cédric Delpoux",
+    "email": "cedric.delpoux@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-source",
+    "gatsby-source-plugin",
+    "google",
+    "youtube",
+    "videos"
+  ],
+  "main": "index.js",
+  "files": [
+    "gatsby-node.js",
+    "utils"
+  ],
+  "dependencies": {
+    "gatsby-source-filesystem": "^2.1.48",
+    "google-oauth2-env-vars": "^1.0.0",
+    "googleapis": "^59.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.7.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-react": "^7.20.6",
+    "husky": "^4.2.1",
+    "lint-staged": "^10.0.7",
+    "prettier": "2.0.5"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.0.0"
+  },
+  "scripts": {
+    "lint": "eslint gatsby-node.js utils example",
+    "prepublishOnly": "yarn lint"
+  },
+  "bin": {
+    "gatsby-source-youtube-token": "./utils/generate-token.js"
+  },
+  "lint-staged": {
+    "*.js": [
+      "yarn lint"
+    ],
+    "*.{css,js,md}": [
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}
