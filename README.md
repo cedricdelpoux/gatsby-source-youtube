@@ -45,6 +45,20 @@ module.exports = {
         channelId: "AFD...dfgDF",
         // Comma-separated list of the YouTube playlist ID(s)
         playlistId: "AFD...dfgDF",
+        // To update video:
+        updateVideo: (video) => {
+          const countryTag = video.tags.find((tag) => tag.startWith("country"))
+
+          if (countryTag) {
+            const [, country] = video.title.split(":")
+            return {
+              ...video,
+              country,
+            }
+          }
+
+          return video
+        },
         // For a better stack trace and more information
         debug: true,
       },

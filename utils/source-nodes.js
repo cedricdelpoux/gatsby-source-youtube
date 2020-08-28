@@ -1,12 +1,18 @@
 const {google} = require("googleapis")
 const GoogleOAuth2 = require("google-oauth2-env-vars")
 
-const {PAGE_SIZE_PLAYLISTS, PAGE_SIZE_VIDEOS} = require("./constants")
+const {
+  DEFAULT_OPTIONS,
+  PAGE_SIZE_PLAYLISTS,
+  PAGE_SIZE_VIDEOS,
+} = require("./constants")
 
 exports.sourceNodes = async (
   {actions: {createNode}, createContentDigest, reporter},
   pluginOptions
 ) => {
+  const options = {...DEFAULT_OPTIONS, ...pluginOptions}
+
   try {
     const googleOAuth2 = new GoogleOAuth2({
       token: "YOUTUBE_TOKEN",
@@ -23,16 +29,16 @@ exports.sourceNodes = async (
       `source-youtube: Fetching playlists`
     )
 
-    if (pluginOptions.debug) {
+    if (options.debug) {
       timerPlaylistsFetching.start()
     }
 
-    const channelFilter = {channelId: pluginOptions.channelId}
-    const playlistFilter = {id: pluginOptions.playlistId}
+    const channelFilter = {channelId: options.channelId}
+    const playlistFilter = {id: options.playlistId}
     const mineFilter = {mine: true}
-    const filter = pluginOptions.playlistId
+    const filter = options.playlistId
       ? playlistFilter
-      : pluginOptions.channelId
+      : options.channelId
       ? channelFilter
       : mineFilter
 
@@ -47,7 +53,7 @@ exports.sourceNodes = async (
 
       playlists.push(...data.items)
 
-      if (pluginOptions.debug) {
+      if (options.debug) {
         timerPlaylistsFetching.setStatus(
           `${playlists.length} playlists found in ${page * PAGE_SIZE_PLAYLISTS}`
         )
@@ -58,7 +64,7 @@ exports.sourceNodes = async (
       nextPageToken = data.nextPageToken
     } while (nextPageToken)
 
-    if (pluginOptions.debug) {
+    if (options.debug) {
       timerPlaylistsFetching.end()
     }
 
@@ -69,7 +75,7 @@ exports.sourceNodes = async (
       const videos = []
       let nextPageToken
 
-      if (pluginOptions.debug) {
+      if (options.debug) {
         timerVideosFetching.start()
       }
 
@@ -93,14 +99,14 @@ exports.sourceNodes = async (
 
         videos.push(...data.items)
 
-        if (pluginOptions.debug) {
+        if (options.debug) {
           timerVideosFetching.setStatus(`${videos.length} videos`)
         }
 
         nextPageToken = data.nextPageToken
       } while (nextPageToken)
 
-      if (pluginOptions.debug) {
+      if (options.debug) {
         timerVideosFetching.end()
       }
 
@@ -115,7 +121,8 @@ exports.sourceNodes = async (
       })
 
       videos.forEach(({snippet, ...fields}) => {
-        const video = {...fields, ...snippet}
+        const video = options.updateVideo({...fields, ...snippet})
+
         createNode({
           ...video,
           playlist___NODE: playlist.id,
