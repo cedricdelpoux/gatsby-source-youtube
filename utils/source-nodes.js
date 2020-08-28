@@ -92,7 +92,7 @@ exports.sourceNodes = async (
           .join(",")
 
         const {data} = await youtube.videos.list({
-          part: ["snippet, statistics, localizations"],
+          part: ["snippet, statistics, localizations, recordingDetails"],
           maxResults: PAGE_SIZE_VIDEOS,
           id: videosIds,
         })
