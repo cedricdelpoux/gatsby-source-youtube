@@ -4,6 +4,7 @@
 - Updated: `YoutubeVideo` nodes field `localThumbnail` renamed to `cover`
 - Added: `YoutubePlaylist` nodes
 - Added: `debug` option
+- Added: `updateVideo` option
 - Added: `gatsby-source-youtube-token` script for token generation
 - Deleted: `maxVideos` option
 - Deleted: `apiKey` option
