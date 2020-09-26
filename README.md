@@ -1,6 +1,19 @@
-# gatsby-source-youtube
+<div align="center">
+  <h1>gatsby-source-youtube</h1>
+  <br/>
+  <p>
+    <img src="./logo.png" alt="gatsby-source-youtube" height="100px">
+  </p>
+  <br/>
 
-[![npm package][npm-badge]][npm]
+[![Npm version][badge-npm]][npm]
+[![Npm downloads][badge-npm-dl]][npm]
+[![MIT license][badge-licence]](./LICENCE.md)
+[![PRs welcome][badge-prs-welcome]](#contributing)
+
+</div>
+
+---
 
 `gatsby-source-youtube` is a [Gatsby](https://www.gatsbyjs.org/) plugin to use [Youtube](https://www.youtube.com/) as a data source.
 
@@ -91,6 +104,10 @@ See [CHANGELOG](./CHANGELOG.md)
 This project is licensed under the MIT License - see the
 [LICENCE](./LICENCE.md) file for details
 
+[badge-npm]: https://img.shields.io/npm/v/gatsby-source-youtube.svg?style=flat-square
+[badge-npm-dl]: https://img.shields.io/npm/dt/gatsby-source-youtube.svg?style=flat-square
+[badge-licence]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
+[badge-prs-welcome]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
 [npm-badge]: https://img.shields.io/npm/v/gatsby-source-youtube.svg?style=flat-square
 [npm]: https://www.npmjs.org/package/gatsby-source-youtube
 [github-issue]: https://github.com/cedricdelpoux/gatsby-source-youtube/issues/new
