@@ -12,10 +12,15 @@ exports.onCreateNode = async ({
     node.internal.type === "YoutubePlaylist" ||
     node.internal.type === "YoutubeVideo"
 
-  if (isYoutubeNode && node.thumbnails.maxres) {
+  if (!isYoutubeNode) return
+
+  const {maxres, standard, high, medium, default: low} = node.thumbnails
+  const thumb = maxres || standard || high || medium || low
+
+  if (thumb) {
     try {
       const fileNode = await createRemoteFileNode({
-        url: node.thumbnails.maxres.url,
+        url: thumb.url,
         parentNodeId: node.id,
         createNode,
         createNodeId,
