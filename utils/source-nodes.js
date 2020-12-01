@@ -120,8 +120,16 @@ exports.sourceNodes = async (
         },
       })
 
-      videos.forEach(({snippet, ...fields}) => {
-        const video = options.updateVideo({...fields, ...snippet})
+      videos.forEach(({snippet, statistics, ...fields}) => {
+        Object.keys(statistics).map((key) => {
+          statistics[key] = Number(statistics[key])
+        })
+
+        const video = options.updateVideo({
+          ...fields,
+          ...snippet,
+          statistics,
+        })
 
         createNode({
           ...video,
