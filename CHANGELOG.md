@@ -1,3 +1,8 @@
+# 2.3.0
+
+- Updated: Statistics are now numbers
+- Updated: Cover generation from max available definition
+
 # 2.0.0
 
 - Updated: Source code rewrited from scratch
