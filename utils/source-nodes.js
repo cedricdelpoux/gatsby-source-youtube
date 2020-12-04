@@ -46,7 +46,6 @@ exports.sourceNodes = async (
       const {data} = await youtube.playlists.list({
         part: ["snippet"],
         maxResults: PAGE_SIZE_PLAYLISTS,
-        mine: true,
         pageToken: nextPageToken,
         ...filter,
       })
