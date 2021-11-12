@@ -1,3 +1,7 @@
+# 2.4.0
+
+- Added: Gatsby v4 compatibility
+
 # 2.3.0
 
 - Updated: Statistics are now numbers

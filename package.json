@@ -1,6 +1,6 @@
 {
   "name": "gatsby-source-youtube",
-  "version": "2.3.2",
+  "version": "2.4.0",
   "description": "Gatsby plugin to use Youtube as a data source",
   "repository": "https://github.com/cedricdelpoux/gatsby-source-youtube",
   "author": {
@@ -38,7 +38,7 @@
     "react-dom": "^17.0.2"
   },
   "peerDependencies": {
-    "gatsby": "^2.0.0 || ^3.0.0"
+    "gatsby": "^3.0.0 || ^4.0.0"
   },
   "scripts": {
     "lint": "eslint gatsby-node.js utils example",
