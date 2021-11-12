@@ -1,8 +1,8 @@
-import React from "react"
-import Img from "gatsby-image"
 import {graphql} from "gatsby"
+import {GatsbyImage, getImage} from "gatsby-plugin-image"
+import React from "react"
 
-export default ({data: {allYoutubeVideo}}) => {
+const PageIndex = ({data: {allYoutubeVideo}}) => {
   return (
     <>
       {allYoutubeVideo.nodes.map((node) => (
@@ -10,7 +10,7 @@ export default ({data: {allYoutubeVideo}}) => {
           <div>{node.title}</div>
           {node.cover && (
             <div style={{width: 500}}>
-              <Img fluid={node.cover.childImageSharp.fluid} />
+              <GatsbyImage image={getImage(node.cover)} />
             </div>
           )}
         </a>
@@ -18,6 +18,8 @@ export default ({data: {allYoutubeVideo}}) => {
     </>
   )
 }
+
+export default PageIndex
 
 export const pageQuery = graphql`
   query IndexQuery {
@@ -27,9 +29,7 @@ export const pageQuery = graphql`
         title
         cover {
           childImageSharp {
-            fluid(maxWidth: 500, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(width: 200, layout: FIXED, placeholder: BLURRED)
           }
         }
       }
