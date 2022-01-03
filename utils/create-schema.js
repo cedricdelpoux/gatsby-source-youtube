@@ -1,4 +1,4 @@
-exports.createSchemaCustomization = ({actions}) => {
+exports.createSchema = ({actions}) => {
   const {createTypes} = actions
   const typeDefs = `
 		type YoutubeVideo implements Node {
