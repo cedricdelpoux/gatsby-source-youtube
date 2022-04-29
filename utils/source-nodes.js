@@ -2,11 +2,7 @@ const {google} = require("googleapis")
 const GoogleOAuth2 = require("google-oauth2-env-vars")
 
 const {handleCover} = require("./handle-cover")
-const {
-  DEFAULT_OPTIONS,
-  PAGE_SIZE_PLAYLISTS,
-  PAGE_SIZE_VIDEOS,
-} = require("./constants")
+const {DEFAULT_OPTIONS, PAGE_SIZE_PLAYLISTS} = require("./constants")
 
 exports.sourceNodes = async (
   {
@@ -89,7 +85,7 @@ exports.sourceNodes = async (
       do {
         const {data: playlistData} = await youtube.playlistItems.list({
           part: ["snippet,contentDetails"],
-          maxResults: PAGE_SIZE_VIDEOS,
+          maxResults: options.maxVideos,
           playlistId: playlist.id,
           pageToken: nextPageToken,
         })
@@ -100,7 +96,7 @@ exports.sourceNodes = async (
 
         const {data} = await youtube.videos.list({
           part: ["snippet, statistics, localizations, recordingDetails"],
-          maxResults: PAGE_SIZE_VIDEOS,
+          maxResults: options.maxVideos,
           id: videosIds,
         })
 

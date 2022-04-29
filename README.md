@@ -58,6 +58,8 @@ module.exports = {
         channelId: "AFD...dfgDF",
         // Comma-separated list of the YouTube playlist ID(s)
         playlistId: "AFD...dfgDF",
+        // Maximum number of videos to fetch, default is 20
+        maxVideos: 20,
         // To update video:
         updateVideo: (video) => {
           const countryTag = video.tags.find((tag) => tag.startWith("country"))
