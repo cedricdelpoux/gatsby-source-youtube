@@ -110,7 +110,7 @@ exports.sourceNodes = async (
           timerVideosFetching.setStatus(`${videos.length} videos`)
         }
 
-        nextPageToken = data.nextPageToken
+        nextPageToken = playlistData.nextPageToken
       } while (nextPageToken)
 
       if (options.debug) {
