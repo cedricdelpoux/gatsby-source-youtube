@@ -31,7 +31,6 @@ exports.sourceNodes = async (
     const playlists = []
 
     let nextPageToken
-    let page = 1
 
     const timerPlaylistsFetching = reporter.activityTimer(
       `source-youtube: Fetching playlists`
@@ -63,8 +62,6 @@ exports.sourceNodes = async (
       if (options.debug) {
         timerPlaylistsFetching.setStatus(`${playlists.length} playlists found`)
       }
-
-      page++
 
       nextPageToken = data.nextPageToken
     } while (nextPageToken)
