@@ -1,3 +1,8 @@
+# 2.5.0
+
+- Updated: Handle covers in source-nodes instead of on-create-node
+- Fixed: Max number of videos fetched
+
 # 2.4.0
 
 - Added: Gatsby v4 compatibility
