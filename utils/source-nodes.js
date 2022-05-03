@@ -61,9 +61,7 @@ exports.sourceNodes = async (
       playlists.push(...data.items)
 
       if (options.debug) {
-        timerPlaylistsFetching.setStatus(
-          `${playlists.length} playlists found in ${page * PAGE_SIZE_PLAYLISTS}`
-        )
+        timerPlaylistsFetching.setStatus(`${playlists.length} playlists found`)
       }
 
       page++
@@ -77,7 +75,7 @@ exports.sourceNodes = async (
 
     for (const playlist of playlists) {
       const timerVideosFetching = reporter.activityTimer(
-        `source-youtube: Fetching ${playlist.snippet.title} videos`
+        `source-youtube: Fetching "${playlist.snippet.title}" playslist videos`
       )
       const videos = []
       let nextPageToken
